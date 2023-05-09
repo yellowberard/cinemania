@@ -11,13 +11,13 @@ datasource db {
 }
 
 model User{
-  id String @id @default(auto()) @map(*_id*) @db.ObjectId
+  id String @id @default(auto()) @map("_id") @db.ObjectId
   name String
   image String?
   email String? @unique
   emailVerified String?
   hashedPassword String?
-  createdAt SateTime @default(now())
+  createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   favoriteIds String[] @db.ObjectId
   sessions Session[]
@@ -25,7 +25,7 @@ model User{
 }
 
 model Account{
-  id String @id @default(auto()) @map(*_id*) @db.ObjectId
+  id String @id @default(auto()) @map("_id") @db.ObjectId
   userId String @db.ObjectId
   type String
   provider String
@@ -40,27 +40,32 @@ model Account{
 
   user User @relation(fields:[userId], references:[id], onDelete: Cascade)
 
-  @@unique([provider.providerAccountId])
+  @@unique([provider,providerAccountId])
 }
 
 model Session{
-  id String @id @default(auto()) @map(*_id*) @db.ObjectId
-  session_token SString @unique
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  session_token String @unique
   userId String @db.ObjectId
   expires DateTime
 
-  user User @relations(fields:[userId], references: [id], onDelete: Cascade)
+  user User @relation(fields:[userId], references: [id], onDelete: Cascade)
 }
 
 model VerificationToken{
-  id string @id @default(auto()) @map(*_id*) @db.ObjectId
+  id String @id @default(auto()) @map("_id") @db.ObjectId
   identifier String
   token String @unique
-  expires Datetime
+  expires DateTime
   @@unique([expires,token])
 }
 
 model Movie{
-  id @id @default(auto())  @map(*_id*) @db.ObjectId
-  
+  id String @id @default(auto())  @map("_id") @db.ObjectId
+  title String
+  description String
+  videoUrl String
+  thumbnailUrl String
+  genre String
+  duration String
 }
