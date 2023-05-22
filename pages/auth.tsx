@@ -72,9 +72,9 @@ const Auth = () => {
               <div className="w-10 h-10 bg-white rounded-full flex cursor-pointer hover:opacity-80 items-center justify-center transition">
                 <FcGoogle size={30}></FcGoogle>
               </div>
-              <div className="w-10 h-10 bg-white rounded-full flex cursor-pointer hover:opacity-80 items-center justify-center transition">
+              <div onClick={() => signIn('github', { callbackUrl: '/' })} className="w-10 h-10 bg-white rounded-full flex cursor-pointer hover:opacity-80 items-center justify-center transition" >
                 <FaGithub size={30}></FaGithub>
-              </div>
+              </div>.
             </div>
             <p className='text-neutral-500 mt-12'>
               {variant === 'login' ? 'First time using Netflix?? ' : 'Already have an account?? '}
