@@ -10,14 +10,7 @@ export default NextAuth({
    providers: [
       GithubProvider({
          clientId: process.env.GITHUB_ID || '',
-         clientSecret: process.env.GITHUB_SECRET || '',
-         authorization: {
-            params: {
-               prompt: 'consent',
-               access_type: 'offline',
-               response_type: 'code'
-            }
-         }
+         clientSecret: process.env.GITHUB_SECRET || ''
       }),
       GoogleProvider({
          clientId: process.env.GOOGLE_CLIENT_ID || '',
@@ -26,7 +19,7 @@ export default NextAuth({
 
       Credentials({
          id: 'credentials',
-         name: 'credentials',
+         name: 'Credentials',
          credentials: {
             email: {
                label: 'Email',
@@ -41,22 +34,27 @@ export default NextAuth({
             if (!credentials?.email || credentials?.password) {
                throw new Error('Email or Password is missing');
             }
+
             const user = await prismadb.user.findUnique({
                where: {
                   email: credentials.email
                }
             });
+
             if (!user || !user.hashedPassword) {
                throw new Error('Email does not exist');
             }
+
             const isCorrectPassword = await compare(credentials.password, user.hashedPassword);
             if (!isCorrectPassword) {
                throw new Error('Incorrect Password');
             }
+
             return user;
          }
       })
    ],
+
    pages: {
       signIn: '/auth'
    },

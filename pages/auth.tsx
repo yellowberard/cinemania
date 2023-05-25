@@ -1,7 +1,7 @@
 import Input from '../components/Input'
 import { useCallback, useState } from 'react';
 import axios from 'axios';
-import { signIn } from 'next-auth/react';
+import { useSession, signIn } from 'next-auth/react';
 import { useRouter } from 'next/router';
 import { FcGoogle } from 'react-icons/fc';
 import { FaGithub } from 'react-icons/fa';
@@ -10,6 +10,7 @@ import { FaGithub } from 'react-icons/fa';
 
 
 const Auth = () => {
+  // const { data: session } = useSession()
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
@@ -33,6 +34,7 @@ const Auth = () => {
     }
     catch (error) {
       console.log(error)
+      console.log('hoi')
     }
   }, [email, password, router]);
 
@@ -64,15 +66,20 @@ const Auth = () => {
               {variant === 'login' ? 'Sign In' : 'Register'}
             </h2>
             <div className='flex flex-col gap-4'>
+
               {variant === 'register' && (<Input label='Username' onChange={(ev: any) => { setName(ev.target.value) }} id='name' type='text' value={name} />)}
 
-              <Input label='Email' id='email' type='email' value={email} onChange={(ev: any) => { setEmail(ev.target.value) }} />
-              <Input label='Password' id='password' type='password' value={password} onChange={(ev: any) => { setPassword(ev.target.value) }} />
+              <Input label='Email' id='email' type='email' value={email} onChange={(ev: any) => setEmail(ev.target.value)} />
+
+              <Input label='Password' id='password' type='password' value={password} onChange={(ev: any) => setPassword(ev.target.value)} />
+
             </div>
-            <button onClick={variant === 'login' ? login : register} className='bg-red-600 py-3 text-white rounded-md w-full mt-10 hover:bg-red-700 transition'> {variant === 'login' ? "Log In" : "Sign Up"}
+            <button onClick={variant === 'login' ? login : register} className='bg-red-600 py-3 text-white rounded-md w-full mt-10 hover:bg-red-700 transition'>
+              {variant === 'login' ? "Log In" : "Sign Up"}
             </button>
+
             <div className='flex flex-row items-center gap-4 mt-8 justify-center'>
-              <div onClick={() => signIn("google")} className="w-10 h-10 bg-white rounded-full flex cursor-pointer hover:opacity-80 items-center justify-center transition">
+              <div onClick={() => signIn("google", { callbackUrl: "/" })} className="w-10 h-10 bg-white rounded-full flex cursor-pointer hover:opacity-80 items-center justify-center transition">
                 <FcGoogle size={30}></FcGoogle>
               </div>
               <div onClick={() => signIn("github", { callbackUrl: "/" })} className="w-10 h-10 bg-white rounded-full flex cursor-pointer hover:opacity-80 items-center justify-center transition" >
