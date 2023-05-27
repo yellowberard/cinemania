@@ -18,6 +18,7 @@ export async function getServerSideProps(context: NextPageContext) {
 }
 export default function Home() {
   const { data: user } = useCurrentUser();
+  console.log(user)
   return (
     <>
       <h1 className='text-red-500 text-xl'>Netfix Clone</h1>

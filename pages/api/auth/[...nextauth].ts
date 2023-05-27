@@ -34,13 +34,13 @@ export default NextAuth({
             if (!credentials?.email || credentials?.password) {
                throw new Error('Email or Password is missing');
             }
-
+            console.log(credentials);
             const user = await prismadb.user.findUnique({
                where: {
                   email: credentials.email
                }
             });
-
+            console.log(user);
             if (!user || !user.hashedPassword) {
                throw new Error('Email does not exist');
             }
