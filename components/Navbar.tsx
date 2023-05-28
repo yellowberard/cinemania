@@ -1,7 +1,9 @@
 import NavbarItem from "./NavbarItem"
 import MobileMenu from "./MobileMenu"
+import AccountMenu from "./AccountMenu"
 import { IoMdArrowDropdown } from 'react-icons/Io'
 import { useState, useCallback } from "react"
+import { BiSearchAlt2, BiBell } from 'react-icons/bi'
 
 const Navbar = () => {
     const [showMobileMenu, setShowMobileMenu] = useState(false);
@@ -24,11 +26,23 @@ const Navbar = () => {
                     <p className="text-white text-sm" >
                         Browse
                     </p>
-                    <IoMdArrowDropdown className="text-white text-2xl transition" />
+                    <IoMdArrowDropdown className=" text-white text-2xl transition" />
                     <MobileMenu visible={showMobileMenu} />
                 </div>
                 <div className="flex flex-row ml-auto gap-7 items-center">
-
+                    <div className="text-gray-200 hover:text-gray-300 cursor-pointer">
+                        <BiSearchAlt2 className=" h-7 w-7 " />
+                    </div>
+                    <div className="text-gray-200 hover:text-gray-300 cursor-pointer">
+                        <BiBell className=" h-7 w-7 " />
+                    </div>
+                    <div className="flex flex-row gap-2 items-center cursor-pointer relative">
+                        <div className="w-6 h-6 lg:w-10 lg:h-10 rounded-md overflow-hidden">
+                            <img src="./images/default-blue.png" alt="" />
+                        </div>
+                        <IoMdArrowDropdown className=" text-white text-2xl transition" />
+                        <AccountMenu visible />
+                    </div>
                 </div>
             </div>
         </nav>

@@ -1,12 +1,10 @@
 import Input from '../components/Input'
-import { useCallback, useState } from 'react';
 import axios from 'axios';
+import { useCallback, useState } from 'react';
 import { useSession, signIn } from 'next-auth/react';
-// import { useRouter } from 'next/router';
 import { FcGoogle } from 'react-icons/fc';
 import { FaGithub } from 'react-icons/fa';
-import credentials from 'next-auth/providers/credentials';
-
+// import { useRouter } from 'next/router';
 
 
 
@@ -28,7 +26,7 @@ const Auth = () => {
         email,
         password,
         redirect: false,
-        callbackUrl: "/profiles"
+        callbackUrl: "/"
       });
       // console.log(session);
 
