@@ -1,4 +1,4 @@
-import NextAuth from 'next-auth/next';
+import NextAuth, { AuthOptions } from 'next-auth';
 import Credentials from 'next-auth/providers/credentials';
 import prismadb from '../../../libs/prismadb';
 import GithubProvider from 'next-auth/providers/github';
@@ -6,7 +6,7 @@ import GoogleProvider from 'next-auth/providers/google';
 import { PrismaAdapter } from '@next-auth/prisma-adapter';
 import { compare } from 'bcrypt';
 
-export default NextAuth({
+export const authOptions: AuthOptions = {
    providers: [
       GithubProvider({
          clientId: process.env.GITHUB_ID || '',
@@ -31,8 +31,8 @@ export default NextAuth({
             }
          },
          async authorize (credentials) {
-            if (!credentials?.email || credentials?.password) {
-               throw new Error('Email or Password is missing');
+            if (!credentials?.email || !credentials?.password) {
+               throw new Error('Email or Password is Missing');
             }
             console.log(credentials);
             const user = await prismadb.user.findUnique({
@@ -67,4 +67,5 @@ export default NextAuth({
       secret: process.env.NEXTAUTH_JWT_SECRET
    },
    secret: process.env.NEXTAUT_SECRET
-});
+};
+export default NextAuth(authOptions);
