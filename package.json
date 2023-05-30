@@ -19,6 +19,7 @@
     "cookies": "^0.8.0",
     "eslint": "8.39.0",
     "eslint-config-next": "13.3.4",
+    "lodash": "^4.17.21",
     "next": "13.3.4",
     "next-auth": "^4.22.1",
     "react": "18.2.0",
@@ -29,6 +30,7 @@
   },
   "devDependencies": {
     "@types/bcrypt": "^5.0.0",
+    "@types/lodash": "^4.14.195",
     "autoprefixer": "^10.4.14",
     "postcss": "^8.4.23",
     "prisma": "^4.13.0",
