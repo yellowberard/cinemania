@@ -5,8 +5,8 @@ import { NextApiRequest, NextApiResponse } from 'next';
 
 export default async function handler (req: NextApiRequest, res: NextApiResponse) {
    try {
-      console.log('hey');
       if (req.method === 'POST') {
+         console.log('hey');
          const { currentUser } = await serverAuth(req, res);
          const { movieId } = req.body;
          console.log(movieId);
@@ -16,9 +16,11 @@ export default async function handler (req: NextApiRequest, res: NextApiResponse
                id: movieId
             }
          });
+
          if (!existingMovie) {
             throw new Error('Invalid Id');
          }
+
          const user = await prismadb.user.update({
             where: {
                email: currentUser.email || ''
@@ -43,6 +45,7 @@ export default async function handler (req: NextApiRequest, res: NextApiResponse
                id: movieId
             }
          });
+
          if (!existingMovie) {
             throw new Error('Invalid ID');
          }
