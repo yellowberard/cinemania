@@ -1,7 +1,7 @@
 import NavbarItem from "./NavbarItem"
 import MobileMenu from "./MobileMenu"
 import AccountMenu from "./AccountMenu"
-import { IoMdArrowDropdown } from 'react-icons/Io'
+import { IoMdArrowDropdown } from 'react-icons/io'
 import { useState, useEffect, useCallback } from "react"
 import { BiSearchAlt2, BiBell } from 'react-icons/bi'
 
