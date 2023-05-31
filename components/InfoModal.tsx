@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react'
-import { AiOutlineClose } from 'react-icons/Ai'
+import { AiOutlineClose } from 'react-icons/ai'
 
 import PlayButton from './PlayButton'
 import FavoriteButton from './FavoriteButton'
