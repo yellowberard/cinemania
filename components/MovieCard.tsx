@@ -2,7 +2,7 @@ import React from 'react';
 import FavoriteButton from './FavoriteButton';
 import useInfoModal from '../hooks/useinfoModal';
 import { useRouter } from 'next/router';
-import { BsFillPlayFill } from 'react-icons/Bs'
+import { BsFillPlayFill } from 'react-icons/bs'
 import { BiChevronDown } from 'react-icons/bi'
 interface MovieCardProps {
     data: Record<string, any>

@@ -1,5 +1,5 @@
 import React, { useCallback } from "react";
-import { AiOutlineInfoCircle } from 'react-icons/Ai'
+import { AiOutlineInfoCircle } from 'react-icons/ai'
 import useBillboard from "../hooks/useBillboard";
 import PlayButton from "./PlayButton";
 import useInfoModal from "../hooks/useinfoModal";

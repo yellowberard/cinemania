@@ -1,6 +1,6 @@
 import React from 'react';
 import useMovie from '../../hooks/useMovie';
-import { AiOutlineArrowLeft } from 'react-icons/Ai'
+import { AiOutlineArrowLeft } from 'react-icons/ai'
 import { useRouter } from 'next/router';
 import { divide } from 'lodash';
 import { watch } from 'fs';
