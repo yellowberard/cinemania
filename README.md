@@ -1,5 +1,5 @@
 # Netflix Clone
-
+I have developed a comprehensive replica of the Netflix website, encompassing the entire stack, and integrated user authentication through MongoDB. The project has been constructed utilizing Next.js. Within this implementation, a collection of videos can be played. Additionally, a modal interface has been incorporated to provide in-depth information about individual films. Furthermore, a feature enabling the creation of a personalized list of favorite selections has been integrated into the system.
 * Login details
   
 email: test_mail@gmail.com
